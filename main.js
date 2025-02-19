@@ -138,13 +138,6 @@ var app = http.createServer(function(request,response){
     });
     request.on('end', function() {
       var post = qs.parse(body);
-      // fs.rename(`data/${id}`, `data/${title}`, function(error){
-      //   fs.writeFile(`data/${title}`, description, 'utf-8', function(error){
-      //     // page redirection 
-      //     response.writeHead(302, {Location: `/?id=${title}`});
-      //     response.end();
-      //   });
-      // });
       db.query(`UPDATE topic SET title = ?, description = ?, author_id = 1 WHERE id = ?`, [post.title, post.description, post.id], function(errror, result){
         response.writeHead(302, {Location: `/?id=${post.id}`});
         response.end();
