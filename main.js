@@ -150,7 +150,7 @@ var app = http.createServer(function(request,response){
     });
     request.on('end', function() {
       var post = qs.parse(body);
-      db.query('DELETE FROM topic WHERE id = ?', [post.id], function(error, result){
+      db.query(`DELETE FROM topic WHERE id = ?`, [post.id], function(error, result){
         if (error) {
           throw error
         }
