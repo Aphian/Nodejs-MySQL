@@ -8,8 +8,8 @@ var db = require('./lib/db.js');
 var topic = require('./lib/topic.js');
 
 var app = http.createServer(function(request,response){
-  var _url = request.url;
-  var queryData = url.parse(_url, true).query;
+  // var _url = request.url;
+  // var queryData = url.parse(_url, true).query;
   var pathname = url.parse(_url, true).pathname;
   if (pathname === '/') {
     if (queryData.id === undefined) {
@@ -30,7 +30,5 @@ var app = http.createServer(function(request,response){
   }
   response.writeHead(404);
   response.end('Not Found!');
-  // console.log(__dirname + url);
-  // response.end(fs.readFileSync(__dirname + _url));
 });
 app.listen(3000);
